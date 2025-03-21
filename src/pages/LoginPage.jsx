@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../api/axios';
+import api from '../api/apiClient';
 import LoginForm from '../components/auth/LoginForm';
 
 const LoginPage = () => {

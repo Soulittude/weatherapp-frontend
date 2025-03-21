@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../api/apiClient';
-import LoginForm from '../components/auth/LoginForm';
+import api from '../api/axios';
+import LoginForm from '../components/LoginForm';
 
 const LoginPage = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
 
-    const handleLogin = async (credentials) => {
+    const handleLogin = async (email, password) => {
         try {
-            const { data } = await api.post('/auth/login', credentials);
-            localStorage.setItem('token', data.token);
+            const response = await api.post('/auth/login', { email, password });
+            localStorage.setItem('token', response.data.token);
             navigate('/');
         } catch (err) {
             setError('Invalid email or password');

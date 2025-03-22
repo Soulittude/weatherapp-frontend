@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { Button, Navbar as BSNavbar, Container } from 'react-bootstrap';
+import { Button, Container, Navbar as BSNavbar } from 'react-bootstrap';
 
 const Navbar = () => {
     const { user, logout } = useAuth();
@@ -12,11 +12,11 @@ const Navbar = () => {
                 <BSNavbar.Toggle aria-controls="basic-navbar-nav" />
                 <BSNavbar.Collapse className="justify-content-end">
                     {user ? (
-                        <Button onClick={logout}>Logout</Button>
+                        <Button onClick={logout} variant="outline-danger">Logout</Button>
                     ) : (
                         <div>
-                            <Button as={Link} to="/login" className="me-2">Login</Button>
-                            <Button as={Link} to="/register">Register</Button>
+                            <Button as={Link} to="/login" variant="outline-primary" className="me-2">Login</Button>
+                            <Button as={Link} to="/register" variant="primary">Register</Button>
                         </div>
                     )}
                 </BSNavbar.Collapse>

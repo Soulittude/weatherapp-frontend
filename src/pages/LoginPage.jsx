@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
-import LoginForm from '../components/LoginForm';
+import LoginForm from '../components/auth/LoginForm';
 
 const LoginPage = () => {
     const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { ListGroup } from 'react-bootstrap';
 import { useAuth } from '../../context/AuthContext';
-import api from '../../api/apiClient';
+import api from '../../api/axios';
 import { useEffect, useState } from 'react';
 
 const HistoryList = ({ onSearch }) => {

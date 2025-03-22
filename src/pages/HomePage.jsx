@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import SearchBar from '../components/weather/SearchBar';
 import WeatherDisplay from '../components/weather/WeatherDisplay';

@@ -9,11 +9,11 @@ const RegisterPage = () => {
 
     const handleRegister = async (username, email, password) => {
         try {
-            const response = await api.post('/auth/register', { username, email, password });
-            localStorage.setItem('token', response.data.token);
+            const { data } = await api.post('/auth/register', { username, email, password });
+            localStorage.setItem('token', data.token);
             navigate('/');
         } catch (err) {
-            setError(err.response?.data?.error || 'Registration failed');
+            setError(err.response?.data?.error || 'Registration failed. Please try again.');
         }
     };
 

@@ -12,7 +12,11 @@ const Navbar = () => {
                 <BSNavbar.Toggle aria-controls="basic-navbar-nav" />
                 <BSNavbar.Collapse className="justify-content-end">
                     {user ? (
-                        <Button onClick={logout} variant="outline-danger">Logout</Button>
+                        <div className="d-flex align-items-center">
+                            {/* Welcome message */}
+                            <span className="me-3">Welcome, {user.username}</span>
+                            <Button onClick={logout} variant="outline-danger">Logout</Button>
+                        </div>
                     ) : (
                         <div>
                             <Button as={Link} to="/login" variant="outline-primary" className="me-2">Login</Button>

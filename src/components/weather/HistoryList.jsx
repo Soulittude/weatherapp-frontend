@@ -27,7 +27,7 @@ const HistoryList = ({ onSearch }) => {
 
     return (
         <ListGroup>
-            <ListGroup.Item className="text-center fw-bold">
+            <ListGroup.Item className="text-center fw-bold bg-light">
                 Recent Searches
             </ListGroup.Item>
             {history.map((item) => (
@@ -35,8 +35,10 @@ const HistoryList = ({ onSearch }) => {
                     key={item._id}
                     action
                     onClick={() => onSearch(item.location)}
+                    className="d-flex justify-content-between align-items-center"
                 >
-                    {item.location}
+                    <span>{item.location}</span>
+                    <small>{new Date(item.timestamp).toLocaleDateString()}</small>
                 </ListGroup.Item>
             ))}
         </ListGroup>

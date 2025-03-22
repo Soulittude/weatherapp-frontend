@@ -29,7 +29,14 @@ const HomePage = () => {
             <h1 className="text-center mb-4">Weather App</h1>
             <SearchBar onSearch={handleSearch} />
             <WeatherDisplay weather={weather} isLoading={isLoading} />
-            {user && <HistoryList onSearch={handleSearch} />}
+
+            {/* Add a section header for history */}
+            {user && (
+                <div className="mt-5">
+                    <h3 className="mb-3">Your Search History</h3>
+                    <HistoryList onSearch={handleSearch} />
+                </div>
+            )}
         </div>
     );
 };

@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import SearchBar from '../components/weather/SearchBar';
 import WeatherDisplay from '../components/weather/WeatherDisplay';
 import HistoryList from '../components/weather/HistoryList';
-import api from '../api/apiClient';
+import api from '../api/axios';
 
 const HomePage = () => {
     const { user } = useAuth();

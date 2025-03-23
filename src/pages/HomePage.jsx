@@ -9,14 +9,17 @@ const HomePage = () => {
     const { user } = useAuth();
     const [weather, setWeather] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [historyTrigger, setHistoryTrigger] = useState(0);
 
     const handleSearch = async (location) => {
         try {
             setIsLoading(true);
             const { data } = await api.get(`/weather/${location}`);
             setWeather(data);
-            // Save to history (only if logged in)
-            if (user) await api.post('/history', { location });
+            if (user) {
+                await api.post('/history', { location });
+                setHistoryTrigger(prev => prev + 1); // Trigger history refresh
+            }
         } catch (err) {
             console.error('Search failed:', err);
         } finally {
@@ -31,12 +34,7 @@ const HomePage = () => {
             <WeatherDisplay weather={weather} isLoading={isLoading} />
 
             {/* Add a section header for history */}
-            {user && (
-                <div className="mt-5">
-                    <h3 className="mb-3">Your Search History</h3>
-                    <HistoryList onSearch={handleSearch} />
-                </div>
-            )}
+            {user && <HistoryList onSearch={handleSearch} refreshTrigger={historyTrigger} />}
         </div>
     );
 };

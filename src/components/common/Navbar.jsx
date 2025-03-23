@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { Button, Container, Navbar as BSNavbar } from 'react-bootstrap';
+import { Button, Navbar as BSNavbar, Container } from 'react-bootstrap';
 
 const Navbar = () => {
     const { user, logout } = useAuth();
@@ -13,7 +13,6 @@ const Navbar = () => {
                 <BSNavbar.Collapse className="justify-content-end">
                     {user ? (
                         <div className="d-flex align-items-center">
-                            {/* Welcome message */}
                             <span className="me-3">Welcome, {user.username}</span>
                             <Button onClick={logout} variant="outline-danger">Logout</Button>
                         </div>

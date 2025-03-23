@@ -9,8 +9,11 @@ export const AuthProvider = ({ children }) => {
 
     const login = (token) => {
         localStorage.setItem('token', token);
-        const decoded = jwtDecode(token); // Decode JWT to get user data
-        setUser(decoded);
+        const decoded = jwtDecode(token);
+        setUser({
+            id: decoded.id,
+            username: decoded.username // Ensure this matches your JWT payload
+        });
     };
 
     const logout = () => {
@@ -21,8 +24,15 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            const decoded = jwtDecode(token);
-            setUser(decoded);
+            try {
+                const decoded = jwtDecode(token);
+                setUser({
+                    id: decoded.id,
+                    username: decoded.username // Ensure username is set
+                });
+            } catch (err) {
+                logout(); // Clear invalid token
+            }
         }
     }, []);
 

@@ -3,7 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 import api from '../../api/axios';
 import { useEffect, useState } from 'react';
 
-const HistoryList = ({ onSearch }) => {
+const HistoryList = ({ onSearch, refreshTrigger }) => {
     const [history, setHistory] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const { user } = useAuth();
@@ -14,14 +14,14 @@ const HistoryList = ({ onSearch }) => {
                 const { data } = await api.get('/history');
                 setHistory(data);
             } catch (err) {
-                console.error('Failed to fetch history:', err);
+                console.error('History fetch failed:', err);
             } finally {
                 setIsLoading(false);
             }
         };
 
         if (user) fetchHistory();
-    }, [user]);
+    }, [user, refreshTrigger]);
 
     if (isLoading) return <div>Loading history...</div>;
 

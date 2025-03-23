@@ -25,18 +25,23 @@ const SearchBar = ({ onSearch }) => {
 
     return (
         <Form onSubmit={handleSubmit} className="mb-4">
-            <InputGroup>
+            <InputGroup className="glass-container">
                 <Form.Control
                     type="text"
-                    placeholder="Search for a location (e.g., London)"
+                    placeholder="🌍 Search for a location..."
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
                     isInvalid={!!error}
+                    className="border-0 bg-transparent"
                 />
-                <Button variant="primary" type="submit" disabled={isLoading}>
-                    {isLoading ? 'Searching...' : 'Search'}
+                <Button
+                    variant="light"
+                    type="submit"
+                    disabled={isLoading}
+                    className="ms-2 rounded-pill px-4 shadow-sm"
+                >
+                    {isLoading ? '🔍 Searching...' : 'Search'}
                 </Button>
-                <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>
             </InputGroup>
         </Form>
     );

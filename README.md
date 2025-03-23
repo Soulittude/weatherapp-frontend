@@ -33,3 +33,9 @@ src/
 ├── pages/        - Page components
 └── styles/       - Global styles
 ```
+
+## Available Scripts
+
+```npm start``` - Start dev server
+
+```npm build``` - Create production build

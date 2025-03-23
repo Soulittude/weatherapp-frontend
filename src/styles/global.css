@@ -1,0 +1,36 @@
+:root {
+  --pastel-blue: #a8d0e6;
+  --pastel-pink: #f8c7cc;
+  --pastel-green: #c3e6cb;
+  --pastel-purple: #c6c8ff;
+  --soft-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background: linear-gradient(to right, var(--pastel-blue), var(--pastel-pink));
+  min-height: 100vh;
+}
+
+.weather-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: var(--soft-shadow);
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.weather-card:hover {
+  transform: translateY(-5px);
+}
+
+.glass-container {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.weather-icon {
+  font-size: 4rem;
+  margin: 1rem 0;
+}
